@@ -6,6 +6,8 @@ import { LoadMoreBtn } from './Button/Button';
 import { RotatingLines } from 'react-loader-spinner';
 import { Modal } from './Modal/Modal';
 
+import styles from './App.module.css';
+
 export class App extends Component {
   LIMIT = 12;
 
@@ -19,9 +21,9 @@ export class App extends Component {
     query: '',
   };
 
-  componentDidMount() {
-    this.loadMoreImages();
-  }
+  // componentDidMount() {
+  //   this.loadMoreImages();
+  // }
 
   componentDidUpdate(_, prevState) {
     if (
@@ -54,7 +56,11 @@ export class App extends Component {
     }
   };
 
-  handleSearch = query => this.setState({ query, page: 1, images: [] });
+  handleSearch = query => {
+    if (query !== this.state.query) {
+      this.setState({ query, page: 1, images: [] });
+    }
+  };
 
   handleLoadMore = () => {
     this.setState(prevState => ({ page: prevState.page + 1 }));
@@ -76,7 +82,7 @@ export class App extends Component {
     const { images, isLoading, showModal, activeItem } = this.state;
 
     return (
-      <div className="App">
+      <div className={styles.App}>
         <SearchBar onSubmit={this.handleSearch} />
         <ImageGallery onClick={this.showModal} imgArr={images} />
 
@@ -91,7 +97,7 @@ export class App extends Component {
             animationDuration="0.75"
             width="96"
             visible={true}
-            className="Loader"
+            className={styles.Loader}
           />
         ) : null}
 

@@ -1,8 +1,10 @@
+import styles from './ImageGalleryItem.module.css';
+
 export const ImageLi = ({ onClick, id, img, alt }) => (
-  <li className="ImageGalleryItem">
+  <li className={styles.ImageGalleryItem}>
     <img
       onClick={onClick}
-      className="ImageGalleryItem-image"
+      className={styles.ImageGalleryItemImage}
       src={img}
       alt={alt}
     />
