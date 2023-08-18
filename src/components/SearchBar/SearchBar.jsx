@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './SearchBar.module.css';
 
@@ -39,3 +40,7 @@ export class SearchBar extends Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onSubmitImage: PropTypes.func.isRequired,
+};
